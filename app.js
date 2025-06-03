@@ -34,6 +34,18 @@ function userFlash(btn) {
 function levelUp() {
     userSeq = [];
     level++;
+
+       if (level > 20) {
+        h2.innerHTML = `🎉 You Win the Game! 🎉 <br>Your score was <b>${level - 1}</b><br>Press any key to restart.`;
+        document.querySelector("body").style.backgroundColor = "#00ff99";
+        setTimeout(function () {
+            document.querySelector("body").style.backgroundColor = "white";
+        }, 150);
+        reset();
+        return;
+    }
+
+
     h2.innerText = `Level ${level}`;
 
     let randIdx = Math.floor(Math.random() * 3);

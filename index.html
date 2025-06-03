@@ -1,26 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon Game</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simon Game</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Simon Game</h1>
-    <h2>Press any key to start the game</h2>
-
-    <div class="btn-container">
-        <div class="line-one">
-            <div class="btn red" type="button" id="red">1</div>
-            <div class="btn yellow" type="button" id="yellow">2</div>
-        </div>
-        <div class="line-two">
-            <div class="btn green" type="button" id="green">3</div>
-            <div class="btn purple" type="button" id="purple">4</div>
-        </div>
+  <div class="container">
+    <div class="rules">
+      <h3>Game Rules</h3>
+      <ul>
+        <li>Press any keys to start the game.</li>
+        <li>A color sequence will appear.</li>
+        <li>Repeat the sequence by clicking the buttons.</li>
+        <li>With each round, the sequence gets longer.</li>
+        <li>If you click the wrong color, the game ends.</li>
+        <li>Press any key to restart after a game over.</li>
+        <li>If you played well then you won the game.</li>
+      </ul>
     </div>
 
-    <script src="app.js"></script>
+    <div class="game">
+      <h1>🎮 Simon Game</h1>
+      <h2>Press any keys to start the game</h2>
+
+      <div class="btn-container">
+        <div class="line-one">
+          <div class="btn red" id="red">1</div>
+          <div class="btn yellow" id="yellow">2</div>
+        </div>
+        <div class="line-two">
+          <div class="btn green" id="green">3</div>
+          <div class="btn purple" id="purple">4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
