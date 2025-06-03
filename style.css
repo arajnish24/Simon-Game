@@ -141,3 +141,21 @@ h2 {
     margin: 1rem;
   }
 }
+
+.start-btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #fff;
+  color: #333;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+  display: none; /* Hidden by default */
+}
+
+@media (max-width: 768px) {
+  .start-btn {
+    display: inline-block;
+  }
+}

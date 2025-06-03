@@ -35,14 +35,14 @@ function levelUp() {
     userSeq = [];
     level++;
 
-       if (level > 20) {
+    if (level > 20) {
         h2.innerHTML = `🎉 You Win the Game! 🎉 <br>Your score was <b>${level - 1}</b><br>Press any key to restart.`;
         document.querySelector("body").style.backgroundColor = "#00ff99";
         setTimeout(function () {
             document.querySelector("body").style.backgroundColor = "white";
         }, 150);
-        reset();
-        return;
+            reset();
+            return;
     }
 
 
@@ -57,20 +57,24 @@ function levelUp() {
 }
 
 function checkAns(idx) {
-    if(userSeq[idx] === gameSeq[idx]) {
-        if(userSeq.length === gameSeq.length) {
+    if (userSeq[idx] === gameSeq[idx]) {
+        if (userSeq.length === gameSeq.length) {
             setTimeout(levelUp, 200);
         }
-    }
-    else{
-        h2.innerHTML = `Game Over! Your score was <b>${level}</b> <br> Press Any Key to Restart.`;
-        document.querySelector("body").style.backgroundColor = "red";
-        setTimeout(function() {
-            document.querySelector("body").style.backgroundColor = "white";
-        }, 150);
+    } else {
+        h2.innerHTML = `Game Over! Your score was <b>${level}</b> <br> ${isMobile ? "Click the button to play again." : "Press Any Key to Restart."}`;
+        document.body.style.backgroundColor = "red";
+        setTimeout(() => document.body.style.backgroundColor = "white", 150);
+
+        // Show start button again on mobile
+        if (isMobile) {
+            startBtn.style.display = "inline-block";
+        }
+
         reset();
     }
 }
+
 
 function btnPress() {
     // console.log(this);
@@ -94,3 +98,30 @@ function reset() {
     userSeq = [];
     level = 0;
 }
+
+let isMobile = window.innerWidth <= 768; // Basic mobile detection
+
+let startBtn = document.getElementById("start-btn");
+
+// Show start button on mobile
+if (isMobile) {
+    startBtn.style.display = "inline-block";
+}
+
+// Shared start logic
+function startGame() {
+    if (!started) {
+        started = true;
+        levelUp();
+        if (isMobile) {
+            startBtn.style.display = "none"; // Hide after starting
+        }
+        console.log("Game started");
+    }
+}
+
+// Keyboard start (for desktop)
+document.addEventListener("keypress", startGame);
+
+// Button click (for mobile)
+startBtn.addEventListener("click", startGame);
